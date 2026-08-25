@@ -17,7 +17,7 @@
       },
       {
         "group": "Research Standards",
-        "pages": ["methodology"]
+        "pages": ["methodology", "source-standards", "corrections"]
       },
       {
         "group": "Guides",
@@ -25,7 +25,7 @@
       },
       {
         "group": "Projects",
-        "pages": ["projects"]
+        "pages": ["projects", "ecosystem"]
       }
     ],
     "global": {
