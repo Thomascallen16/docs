@@ -1,0 +1,48 @@
+---
+title: "Ecosystem Status"
+description: "Current source-of-truth map for The Citizen's Record ecosystem."
+---
+
+# Ecosystem Status
+
+This page records the current repository roles so work is performed against the correct source of truth.
+
+## Current map
+
+| Repository | Role | Current assessment |
+|---|---|---|
+| `The-Citizens-Record` | Public static Citizen's Record site | **Production candidate / public deployment source** |
+| `citizens-recordapp` | Full-stack Citizen's Record application | **Application source; requires deployment verification** |
+| `citizens-record` | Large repository requiring deeper audit | **Unclassified until contents and history are inspected** |
+| `docs` | Mintlify documentation hub | **Documentation source of truth** |
+| `ProofFlow` | ProofFlow project | **Blocked: repository contains recovery/status material rather than application source** |
+
+## The two Citizen's Record layers
+
+The ecosystem currently has two clearly distinguishable Citizen's Record implementations.
+
+### Public static site
+
+`The-Citizens-Record` describes itself as a source-first civic education project and contains automated validation plus GitHub Pages deployment. Its README states that `npm run build:pages` stages production assets and that the Deploy GitHub Pages workflow publishes them to the project's GitHub Pages URL.
+
+### Full-stack application
+
+`citizens-recordapp` is materially different. Its package manifest contains Vite/React frontend tooling, an Express server, tRPC, Drizzle ORM, MySQL, authentication-related packages, Stripe, tests, and a production start command. It is therefore an application codebase rather than simply another copy of the static site.
+
+## Operating rule
+
+Do not delete or merge these repositories merely because their names overlap. Their roles must be established from code, deployment configuration, commit history, and live behavior first.
+
+The next audit target is `citizens-record`: determine whether it is an older application, a newer canonical application, an abandoned build, or another distinct product before changing it.
+
+## ProofFlow status
+
+The current `ProofFlow` GitHub repository is explicitly marked **BLOCKED** by its recovery record. That record states that the repository contains a preserved bootstrap/status state and does not contain the complete application source, package manifest, dependency lockfile, build command, or test suite. The missing managed-project/source export is therefore a genuine blocker, not something to guess around.
+
+## Status labels
+
+- **Production candidate** — contains the intended public deployment source and deployment machinery.
+- **Application source** — contains substantial executable application code but deployment still requires verification.
+- **Documentation source of truth** — canonical documentation repository.
+- **Unclassified** — requires further inspection before architectural decisions.
+- **Blocked** — a documented missing dependency, source, credential, or external system prevents safe completion.
