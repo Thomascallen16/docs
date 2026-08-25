@@ -1,34 +1,44 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mintlify Starter Kit",
+  "name": "The Citizen's Record",
+  "description": "A source-based civic record, public research hub, and practical guide to working with information.",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#1E3A5F",
+    "light": "#3B82C4",
+    "dark": "#16324F"
   },
   "favicon": "/favicon.svg",
   "navigation": {
     "pages": [
       {
-        "group": "Getting Started",
-        "pages": [
-          "index",
-          "quickstart"
-        ]
+        "group": "Start Here",
+        "pages": ["index", "quickstart", "about-citizens-record"]
+      },
+      {
+        "group": "Research Standards",
+        "pages": ["methodology"]
+      },
+      {
+        "group": "Guides",
+        "pages": ["records-guide", "legal-information"]
+      },
+      {
+        "group": "Projects",
+        "pages": ["projects"]
       }
     ],
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
+          "anchor": "Citizen's Record",
+          "href": "https://thomascallen16.github.io/The-Citizens-Record/",
+          "icon": "landmark"
         },
         {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
+          "anchor": "GitHub",
+          "href": "https://github.com/Thomascallen16/docs",
+          "icon": "github"
         }
       ]
     }
@@ -40,33 +50,22 @@
   "navbar": {
     "links": [
       {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "label": "Main Site",
+        "href": "https://thomascallen16.github.io/The-Citizens-Record/"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://app.mintlify.com"
+      "label": "Start Here",
+      "href": "/quickstart"
     }
   },
   "contextual": {
-    "options": [
-      "copy",
-      "view",
-      "chatgpt",
-      "claude",
-      "perplexity",
-      "mcp",
-      "cursor",
-      "vscode"
-    ]
+    "options": ["copy", "view", "chatgpt", "claude", "perplexity", "mcp", "cursor", "vscode"]
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "github": "https://github.com/Thomascallen16/docs"
     }
   }
 }
