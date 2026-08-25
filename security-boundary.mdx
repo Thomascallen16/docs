@@ -1,0 +1,38 @@
+---
+title: "Security Boundary"
+description: "What belongs in the public Citizen's Record and what must remain private."
+---
+
+# Security Boundary
+
+The Citizen's Record separates **public civic information** from **private application data and credentials**.
+
+## Public
+
+The public platform may expose information intentionally published for civic research, including official records, source links, documented allegations, filings, outcomes, methodology, and other material that is appropriate for public release.
+
+## Never public
+
+The ecosystem must never expose:
+
+- passwords, session tokens, JWT secrets, OAuth secrets, or reset tokens;
+- database credentials or production connection strings;
+- Stripe secret keys or webhook signing secrets;
+- private API/service credentials;
+- banking credentials or payment-account credentials;
+- Social Security numbers or other sensitive identity credentials;
+- private case files, evidence, uploads, or production database exports;
+- private storage objects or authenticated-user data; or
+- administrator credentials or material that enables impersonation or unauthorized access.
+
+## Application boundary
+
+Private workspace data must be protected by server-side authentication, authorization, and user/record ownership checks. A UI element being hidden is not sufficient security.
+
+Credentials belong in protected deployment secrets, not GitHub source. Client-side code receives only values explicitly intended to be public.
+
+## Security status
+
+Security work is continuous. Repository checks, deployment configuration, authentication, storage, payment integrations, and historical Git data must be reviewed before declaring a system production-secure.
+
+When uncertain, treat information as private until its public-release status is established.
