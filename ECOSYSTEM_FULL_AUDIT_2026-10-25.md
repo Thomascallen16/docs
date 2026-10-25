@@ -12,7 +12,7 @@ No repositories were deleted. No credentials, production databases, or user data
 
 | Repository | Change | Validation |
 |---|---|---|
-| `citizens-record` | Updated vulnerable direct and transitive dependencies, refreshed the lockfile with pnpm 10.34.7, and enabled scheduled Dependabot updates. | Dependency audit, typecheck, tests, production build, security scan, and agent-supply-chain scan passed. Audit now reports **0 high/critical** and **23 low/moderate** advisories. |
+| `citizens-record` | Updated vulnerable direct and transitive dependencies, refreshed the lockfile with pnpm 10.34.7, enabled scheduled Dependabot updates, and hardened the Windows portable-build workflow with pinned actions, pinned PyInstaller, ZIP-content checks, and executable-hash verification. | Dependency audit, typecheck, tests, production build, portable Windows build, security scan, and agent-supply-chain scan passed. Audit now reports **0 high/critical** and **23 low/moderate** advisories. |
 | `watchtower` | Added the missing `supply_chain` risk category to the Drizzle schema and SQL migration. Enforced task-authority limits as a hard stop, accepted verified source citations as provenance locators, and corrected an async test. | Watchtower CI, security scan, and agent-supply-chain scan passed on main. |
 | `evidence-integrity-engine` | Fixed a test fixture that expected a VERIFIED record to promote evidence without the required verifier and method fields. The engine's strict validation was retained. | Main CI passed. |
 | `prompt-bridge` | Restricted the HTTP server to the public app and `/healthz`; source files, package metadata, documentation, environment templates, and `.git` paths now return 404. Added method restrictions and browser security headers. | Main HTTP smoke test passed, including denied-file and POST checks. |
@@ -21,7 +21,9 @@ No repositories were deleted. No credentials, production databases, or user data
 
 Relevant merged changes:
 
+- [Citizen's Record agent-security false-positive fix](https://github.com/Thomascallen16/The-Citizens-Record/pull/8)
 - [citizens-record dependency remediation](https://github.com/Thomascallen16/citizens-record/pull/29)
+- [Portable Windows build integrity checks](https://github.com/Thomascallen16/citizens-record/pull/36)
 - [watchtower schema and authorization fix](https://github.com/Thomascallen16/watchtower/pull/15)
 - [Evidence Integrity Engine test fix](https://github.com/Thomascallen16/evidence-integrity-engine/pull/4)
 - [Prompt Bridge server hardening](https://github.com/Thomascallen16/prompt-bridge/pull/2)
@@ -32,12 +34,12 @@ Relevant merged changes:
 
 | Repository | Current role | Audit result | Remaining work |
 |---|---|---|---|
-| `The-Citizens-Record` | Public static civic portal | Scheduled validation passed on Oct 21; latest observed Pages deployment passed on Oct 8. | Verify the live site in a browser after recent changes; workflow success alone is not proof of live runtime health. |
+| `The-Citizens-Record` | Public static civic portal | Static Site CI, Security Scan, and Agent Supply Chain Security all passed on Oct 25 after fixing a false positive caused by the policy document naming install commands. Scheduled validation passed on Oct 21; latest observed Pages deployment passed on Oct 8. | Verify the live site in a browser after recent changes; workflow success alone is not proof of live runtime health. |
 | `docs` | Canonical ecosystem documentation | **Green.** Documentation validation and security scans passed on Oct 25. | Verify Mintlify's external publishing integration separately. |
 | `ProofFlow` | Legacy provenance/evidence source | Latest available CI and security checks passed on Sep 11. | No recent main-branch run. Preserve unique source until EIE/workspace migration is proven; do not delete based on overlap alone. |
 | `The-Citizen-Main-File` | Historical static-site archive | Archive security scan passed on Aug 29. Current tree has no active deployment workflow. | Keep archived; do not treat as a production site. |
 | `fear-the-wolves` | Separate Expo/mobile Prompt Bridge product | Old web-export validation failed because Metro could not hash generated NativeWind CSS. A scoped fix is merged and validation is rerunning. | Confirm the post-merge Expo export and tests finish green; native device/store release still requires separate verification. |
-| `citizens-record` | Full-stack workspace source and migration source | **Green for build/security gate.** Dependency audit, typecheck, tests, and build passed on the remediation branch; high/critical advisories are cleared. | 23 low/moderate advisories remain. Production deployment is not verified. The application has not yet been migrated into `Open-the-Record`. |
+| `citizens-record` | Full-stack workspace source and migration source | **Green for build/security gate.** Dependency audit, typecheck, tests, production build, and the hardened Windows portable build passed on Oct 25; high/critical advisories are cleared. | 23 low/moderate advisories remain. Production deployment is not verified. The application has not yet been migrated into `Open-the-Record`. |
 | `watchtower` | Separate privacy/security application | **Green.** Main CI, security scan, and agent-supply-chain scan passed on Oct 25. | Apply the new enum migration to any deployed database before writing `supply_chain` category records. Live provider/deployment behavior remains unverified. |
 | `Open-the-Record` | Intended private workspace destination | Repository is private and its consolidation smoke test passed on Sep 29. | **Migration is incomplete.** The repository still contains module/documentation scaffolding rather than the full `citizens-record` application; it has no package manifest or application CI. The MVP acceptance test correctly remains blocked. |
 | `evidence-integrity-engine` | Canonical deterministic evidence-integrity core | **CI green.** Main CI passed on Oct 25 after the test fix. | **Pages deployment blocked:** GitHub reports no Pages site and the workflow token cannot create one. An owner must enable Pages in repository Settings → Pages and choose GitHub Actions, then rerun Deploy Proof Lab. |
