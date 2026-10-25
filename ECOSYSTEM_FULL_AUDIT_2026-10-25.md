@@ -17,7 +17,7 @@ No repositories were deleted. No credentials, production databases, or user data
 | `evidence-integrity-engine` | Fixed a test fixture that expected a VERIFIED record to promote evidence without the required verifier and method fields. The engine's strict validation was retained. | Main CI passed. |
 | `prompt-bridge` | Restricted the HTTP server to the public app and `/healthz`; source files, package metadata, documentation, environment templates, and `.git` paths now return 404. Added method restrictions and browser security headers. | Main HTTP smoke test passed, including denied-file and POST checks. |
 | `docs` | Restored automatic validation for Mintlify navigation, local pages/assets, JSON configuration, and script syntax. | Documentation CI and security scan passed on main. |
-| `fear-the-wolves` | Made the NativeWind filesystem-CSS workaround configurable for web export and enabled CI on pushes and pull requests with pinned Actions. | Fix merged; post-merge Expo validation was still running at the time of this audit. |
+| `fear-the-wolves` | Made the NativeWind filesystem-CSS workaround configurable for web export and enabled CI on pushes and pull requests with pinned Actions. | Fix merged; post-merge Expo validation passed on Oct 25. |
 
 Relevant merged changes:
 
