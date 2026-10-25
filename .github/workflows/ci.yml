@@ -1,0 +1,36 @@
+name: Documentation CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: documentation-ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Validate Mintlify configuration and local assets
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - name: Setup Node.js
+        uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
+        with:
+          node-version: "24"
+          package-manager-cache: false
+      - name: Validate script syntax
+        run: node --check scripts/validate-docs.mjs
+      - name: Validate JSON configuration
+        run: node --input-type=module -e "JSON.parse(await (await import('node:fs/promises')).readFile('docs.json','utf8')); console.log('docs.json is valid JSON')"
+      - name: Validate navigation pages and configured assets
+        run: node scripts/validate-docs.mjs
+      - name: Check whitespace errors
+        run: git diff --check
